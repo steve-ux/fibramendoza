@@ -18,6 +18,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Fibra Mendoza - Internet Hogar y Planes Móviles",
   description: "Fibra en Mendoza y planes móviles",
+  icons: {
+    icon: "/logo fibra Mendoza.png",
+    shortcut: "/logo fibra Mendoza.png",
+    apple: "/logo fibra Mendoza.png",
+  },
 };
 
 export default function RootLayout({
