@@ -132,11 +132,11 @@ export default function Home() {
 
       {/* Hero Section */}
       <section
-        className="relative bg-[#ffffff] py-16 px-4 overflow-hidden"
+        className="relative bg-[#ffffff] py-4 md:py-16 px-0 md:px-4 overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="w-full md:max-w-7xl mx-auto relative z-10 px-0 md:px-0 pb-6 md:pb-0">
           {/* Carrusel */}
-          <div className="relative overflow-hidden rounded-2xl w-full" style={{ minHeight: '500px' }}>
+          <div className="relative overflow-hidden rounded-none md:rounded-2xl w-full pb-6 md:pb-0">
             <div 
               className="flex transition-transform duration-500 ease-in-out"
               style={{ 
@@ -147,7 +147,6 @@ export default function Home() {
                 <div 
                   key={index} 
                   className="min-w-full flex-shrink-0 w-full flex items-center justify-center"
-                  style={{ minHeight: '500px' }}
                 >
                   <a
                     href="https://wa.me/5491125442329?text=Hola,%20me%20interesa%20saber%20más%20sobre%20los%20planes"
@@ -160,7 +159,7 @@ export default function Home() {
                       alt={`Slide ${index + 1}`}
                       width={1200}
                       height={600}
-                      className="w-full h-auto max-h-[500px] object-contain mx-auto"
+                      className="w-full h-auto max-h-[480px] md:max-h-[500px] object-contain mx-auto"
                       priority={index === 0}
                       loading={index === 0 ? "eager" : "lazy"}
                     />
@@ -170,7 +169,7 @@ export default function Home() {
             </div>
             
             {/* Indicadores */}
-            <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 flex gap-2">
+            <div className="absolute bottom-0 md:bottom-1 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
               {carouselImages.map((_, index) => (
                 <button
                   key={index}
