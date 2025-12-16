@@ -91,6 +91,13 @@ export default function Home() {
         setMessage({ type: 'success', text: '¡Gracias! Te contactaremos pronto.' });
         setNumber("");
         setPrivacy(false);
+        
+        // Trackear evento de Google Analytics
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'generate_lead', {
+            method: 'fibra_mendoza_form'
+          });
+        }
       } else {
         setMessage({ type: 'error', text: data.error || 'Error al enviar el formulario' });
       }
