@@ -306,7 +306,7 @@ export default function Home() {
                 </div>
                 <div className="p-8 text-center">
                   <h3 className="text-2xl font-bold text-[#0d2b61] mb-4">Plan GIGA</h3>
-                  <div className="text-4xl font-bold text-gray-900 mb-2">$19.900 x mes</div>
+                  <div className="text-4xl font-bold text-gray-900 mb-2">$23.900 x mes</div>
                   <div className="text-gray-500 line-through mb-1">Antes $67.100</div>
                   <div className="text-sm text-gray-600 mb-6">Precio sin Impuestos $16.446</div>
                   <div className="space-y-3 mb-6">
@@ -314,7 +314,7 @@ export default function Home() {
                       2 meses de fibra GRATIS
                     </div>
                     <div className="bg-gradient-to-r from-[#de3b7f] to-[#c92b6f] text-white rounded-lg py-2 px-4 font-semibold">
-                      2 meses de TV GRATIS
+                    Instalación Exprés GRATIS
                     </div>
                   </div>
                   <Button className="w-full bg-[#0d2b61] hover:bg-[#0a2149] text-white rounded-full py-6 text-lg font-semibold" onClick={() => {
@@ -331,7 +331,7 @@ export default function Home() {
                 </div>
                 <div className="p-8 text-center">
                   <h3 className="text-2xl font-bold text-[#0d2b61] mb-4">300 megas</h3>
-                  <div className="text-4xl font-bold text-gray-900 mb-2">$19.900 x mes</div>
+                  <div className="text-4xl font-bold text-gray-900 mb-2">$23.900 x mes</div>
                   <div className="text-gray-500 line-through mb-1">Antes $59.700</div>
                   <div className="text-sm text-gray-600 mb-6">Precio sin Impuestos $16.446</div>
                   <div className="space-y-3 mb-6">
@@ -353,72 +353,75 @@ export default function Home() {
           )}
 
           {selectedPlanType === "movil" && (
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              <Card className="border-2 border-gray-200 rounded-2xl overflow-hidden shadow-lg">
-                <div className="p-8 text-center">
-                  <h3 className="text-xl font-bold text-[#0d2b61] mb-4">Plan Móvil</h3>
-                  <div className="text-3xl font-bold text-[#0f9fee] mb-2">4 GB</div>
-                  <div className="text-4xl font-bold text-gray-900 mb-2">$11.000 x mes</div>
-                  <div className="text-gray-500 line-through mb-1">Antes $36.350</div>
-                  <div className="text-sm text-[#de3b7f] font-semibold mb-4">
-                    $25.350 de bonificación x 6 meses
+            <>
+              <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <Card className="border-2 border-gray-200 rounded-2xl overflow-hidden shadow-lg">
+                  <div className="p-8 text-center">
+                    <h3 className="text-xl font-bold text-[#0d2b61] mb-4">Plan Móvil</h3>
+                    <div className="text-3xl font-bold text-[#0f9fee] mb-2">4 GB</div>
+                    <div className="text-4xl font-bold text-gray-900 mb-2">$11.000 x mes</div>
+                    <div className="text-gray-500 line-through mb-1">Antes $36.350</div>
+                    <div className="text-sm text-[#de3b7f] font-semibold mb-4">
+                      $25.350 de bonificación x 6 meses
+                    </div>
+                    <div className="text-sm text-gray-600 mb-6">
+                      Precio sin impuestos nacionales $9.091
+                    </div>
+                    <Button className="w-full bg-[#0f9fee] hover:bg-[#0d8dd6] text-white rounded-full py-6 text-lg font-semibold" onClick={() => {
+                window.open("https://wa.me/5491125442329?text=Hola,%20me%20interesa%20saber%20más%20sobre%20los%20planes", "_blank");
+              }}>
+                      Lo quiero
+                    </Button>
                   </div>
-                  <div className="text-sm text-gray-600 mb-6">
-                    Precio sin impuestos nacionales $9.091
-                  </div>
-                  <Button className="w-full bg-[#0f9fee] hover:bg-[#0d8dd6] text-white rounded-full py-6 text-lg font-semibold" onClick={() => {
-              window.open("https://wa.me/5491125442329?text=Hola,%20me%20interesa%20saber%20más%20sobre%20los%20planes", "_blank");
-            }}>
-                    Lo quiero
-                  </Button>
-                </div>
-              </Card>
+                </Card>
 
-              <Card className="border-4 border-[#0f9fee] rounded-2xl overflow-hidden shadow-lg relative">
-                <div className="absolute top-4 right-4 bg-[#de3b7f] text-white px-3 py-1 rounded-full text-xs font-bold">
-                  Plan recomendado
-                </div>
-                <div className="p-8 text-center">
-                  <h3 className="text-xl font-bold text-[#0d2b61] mb-4">Plan Móvil</h3>
-                  <div className="text-3xl font-bold text-[#0f9fee] mb-2">8 GB</div>
-                  <div className="text-4xl font-bold text-gray-900 mb-2">$12.850 x mes</div>
-                  <div className="text-gray-500 line-through mb-1">Antes $50.550</div>
-                  <div className="text-sm text-[#de3b7f] font-semibold mb-2">
-                    $37.700 de bonificación x 6 meses
+                <Card className="border-4 border-[#0f9fee] rounded-2xl overflow-hidden shadow-lg relative">
+                  <div className="absolute top-4 right-4 bg-[#de3b7f] text-white px-3 py-1 rounded-full text-xs font-bold">
+                    Plan recomendado
                   </div>
-                  <div className="text-sm text-gray-700 mb-4">4 GB por mes para roaming en América</div>
-                  <div className="text-sm text-gray-600 mb-6">
-                    Precio sin impuestos nacionales $10.620
+                  <div className="p-8 text-center">
+                    <h3 className="text-xl font-bold text-[#0d2b61] mb-4">Plan Móvil</h3>
+                    <div className="text-3xl font-bold text-[#0f9fee] mb-2">8 GB</div>
+                    <div className="text-4xl font-bold text-gray-900 mb-2">$12.850 x mes</div>
+                    <div className="text-gray-500 line-through mb-1">Antes $50.550</div>
+                    <div className="text-sm text-[#de3b7f] font-semibold mb-2">
+                      $37.700 de bonificación x 6 meses
+                    </div>
+                    <div className="text-sm text-gray-700 mb-4">4 GB por mes para roaming en América</div>
+                    <div className="text-sm text-gray-600 mb-6">
+                      Precio sin impuestos nacionales $10.620
+                    </div>
+                    <Button className="w-full bg-[#0f9fee] hover:bg-[#0d8dd6] text-white rounded-full py-6 text-lg font-semibold" onClick={() => {
+                window.open("https://wa.me/5491125442329?text=Hola,%20me%20interesa%20saber%20más%20sobre%20los%20planes", "_blank");
+              }}>
+                      Lo quiero
+                    </Button>
                   </div>
-                  <Button className="w-full bg-[#0f9fee] hover:bg-[#0d8dd6] text-white rounded-full py-6 text-lg font-semibold" onClick={() => {
-              window.open("https://wa.me/5491125442329?text=Hola,%20me%20interesa%20saber%20más%20sobre%20los%20planes", "_blank");
-            }}>
-                    Lo quiero
-                  </Button>
-                </div>
-              </Card>
+                </Card>
 
-              <Card className="border-2 border-gray-200 rounded-2xl overflow-hidden shadow-lg">
-                <div className="p-8 text-center">
-                  <h3 className="text-xl font-bold text-[#0d2b61] mb-4">Plan Móvil</h3>
-                  <div className="text-3xl font-bold text-[#0f9fee] mb-2">15 GB</div>
-                  <div className="text-4xl font-bold text-gray-900 mb-2">$23.450 x mes</div>
-                  <div className="text-gray-500 line-through mb-1">Antes $76.700</div>
-                  <div className="text-sm text-[#de3b7f] font-semibold mb-2">
-                    $53.250 de bonificación x 6 meses
+                <Card className="border-2 border-gray-200 rounded-2xl overflow-hidden shadow-lg">
+                  <div className="p-8 text-center">
+                    <h3 className="text-xl font-bold text-[#0d2b61] mb-4">Plan Móvil</h3>
+                    <div className="text-3xl font-bold text-[#0f9fee] mb-2">15 GB</div>
+                    <div className="text-4xl font-bold text-gray-900 mb-2">$23.450 x mes</div>
+                    <div className="text-gray-500 line-through mb-1">Antes $76.700</div>
+                    <div className="text-sm text-[#de3b7f] font-semibold mb-2">
+                      $53.250 de bonificación x 6 meses
+                    </div>
+                    <div className="text-sm text-gray-700 mb-4">5 GB por mes para roaming en el Mundo</div>
+                    <div className="text-sm text-gray-600 mb-6">
+                      Precio sin impuestos nacionales $19.380
+                    </div>
+                    <Button className="w-full bg-[#0f9fee] hover:bg-[#0d8dd6] text-white rounded-full py-6 text-lg font-semibold" onClick={() => {
+                window.open("https://wa.me/5491125442329?text=Hola,%20me%20interesa%20saber%20más%20sobre%20los%20planes", "_blank");
+              }}>
+                      Lo quiero
+                    </Button>
                   </div>
-                  <div className="text-sm text-gray-700 mb-4">5 GB por mes para roaming en el Mundo</div>
-                  <div className="text-sm text-gray-600 mb-6">
-                    Precio sin impuestos nacionales $19.380
-                  </div>
-                  <Button className="w-full bg-[#0f9fee] hover:bg-[#0d8dd6] text-white rounded-full py-6 text-lg font-semibold" onClick={() => {
-              window.open("https://wa.me/5491125442329?text=Hola,%20me%20interesa%20saber%20más%20sobre%20los%20planes", "_blank");
-            }}>
-                    Lo quiero
-                  </Button>
-                </div>
-              </Card>
-            </div>
+                </Card>
+              </div>
+              <p className="text-center text-sm text-gray-600 mt-6">*Precios de portabilidad. Los precios pueden variar dependiendo de tu empresa móvil de origen.</p>
+            </>
           )}
         </div>
       </section>
@@ -631,11 +634,11 @@ export default function Home() {
           <div className="mt-6 pt-6 border-t text-center text-xs text-gray-600">
             <p>
               <a href="#" className="underline">
-                Malen Serrano
+                Sol Serrano
               </a>{" "}
               brinda asesoría comercial sobre planes de una empresa de telefonía e internet líder en Argentina.{" "}<br></br>
               <a href="#">
-              Este sitio es independiente.
+              Este sitio es independiente. By <a href="https://ekoddex.com/" target="_blank" rel="noreferer" className="text-[#0f9fee] underline">eKoddex</a>.
               </a>
             </p>
             <p className="mt-2">

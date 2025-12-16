@@ -50,7 +50,7 @@ export default function TerminosLegales() {
                 1. Información General
               </h2>
               <p className="mb-4">
-                Este sitio web es operado por Malen Serrano, quien brinda asesoría comercial sobre planes de una empresa de telefonía e internet líder en Argentina.
+                Este sitio web es operado por Sol Serrano, quien brinda asesoría comercial sobre planes de una empresa de telefonía e internet líder en Argentina.
               </p>
               <p className="mb-4">
                 Este sitio es independiente y no pertenece a Movistar ni a Telefónica oficialmente.
