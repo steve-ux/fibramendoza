@@ -14,12 +14,14 @@ export default function Home() {
   const [selectedPlanType, setSelectedPlanType] = useState("internet");
   
   // Estados para el formulario del hero
+  const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
   
   // Estados para el formulario del footer
+  const [nameFooter, setNameFooter] = useState("");
   const [phoneNumberFooter, setPhoneNumberFooter] = useState("");
   const [privacyAcceptedFooter, setPrivacyAcceptedFooter] = useState(false);
   const [isSubmittingFooter, setIsSubmittingFooter] = useState(false);
@@ -44,13 +46,20 @@ export default function Home() {
 
   // Función compartida para enviar el formulario
   const handleSubmit = async (
+    nameValue: string,
     number: string,
     privacy: boolean,
     setSubmitting: (value: boolean) => void,
     setMessage: (value: { type: 'success' | 'error', text: string } | null) => void,
+    setNameValue: (value: string) => void,
     setNumber: (value: string) => void,
     setPrivacy: (value: boolean) => void
   ) => {
+    if (!nameValue || !nameValue.trim()) {
+      setMessage({ type: 'error', text: 'Por favor ingresa tu nombre' });
+      return;
+    }
+
     if (!privacy) {
       setMessage({ type: 'error', text: 'Debes aceptar la política de privacidad' });
       return;
@@ -80,6 +89,7 @@ export default function Home() {
         },
         body: JSON.stringify({
           number: number.trim(),
+          nombre_form: nameValue.trim(),
           observaciones: null,
           recaptchaToken,
         }),
@@ -89,6 +99,7 @@ export default function Home() {
 
       if (response.ok) {
         setMessage({ type: 'success', text: '¡Gracias! Te contactaremos pronto.' });
+        setNameValue("");
         setNumber("");
         setPrivacy(false);
         
@@ -141,11 +152,11 @@ export default function Home() {
       <section
         className="relative bg-[#ffffff] py-4 md:py-16 px-0 md:px-4 overflow-hidden"
       >
-        <div className="w-full md:max-w-7xl mx-auto relative z-10 px-0 md:px-0 pb-6 md:pb-0">
+        <div className="w-full md:max-w-7xl mx-auto relative z-10 px-0 md:px-0">
           {/* Carrusel */}
-          <div className="relative overflow-hidden rounded-none md:rounded-2xl w-full pb-6 md:pb-0">
+          <div className="relative overflow-hidden rounded-none md:rounded-2xl w-full h-[240px] sm:h-[280px] md:h-[420px] lg:h-[480px]">
             <div 
-              className="flex transition-transform duration-500 ease-in-out"
+              className="flex h-full transition-transform duration-500 ease-in-out"
               style={{ 
                 transform: `translateX(-${currentSlide * 100}%)`
               }}
@@ -153,20 +164,20 @@ export default function Home() {
               {carouselImages.map((image, index) => (
                 <div 
                   key={index} 
-                  className="min-w-full flex-shrink-0 w-full flex items-center justify-center"
+                  className="min-w-full flex-shrink-0 w-full h-full flex items-center justify-center"
                 >
                   <a
                     href="https://wa.me/5491125442329?text=Hola,%20me%20interesa%20saber%20más%20sobre%20los%20planes"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block cursor-pointer w-full"
+                    className="block cursor-pointer w-full h-full"
                   >
                     <Image
                       src={image}
                       alt={`Slide ${index + 1}`}
                       width={1200}
                       height={600}
-                      className="w-full h-auto max-h-[480px] md:max-h-[500px] object-contain mx-auto"
+                      className="w-full h-full object-contain mx-auto"
                       priority={index === 0}
                       loading={index === 0 ? "eager" : "lazy"}
                     />
@@ -176,7 +187,7 @@ export default function Home() {
             </div>
             
             {/* Indicadores */}
-            <div className="absolute bottom-0 md:bottom-1 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+            <div className="absolute bottom-2 md:bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
               {carouselImages.map((_, index) => (
                 <button
                   key={index}
@@ -221,15 +232,25 @@ export default function Home() {
               onSubmit={(e) => {
                 e.preventDefault();
                 handleSubmit(
+                  name,
                   phoneNumber,
                   privacyAccepted,
                   setIsSubmitting,
                   setSubmitMessage,
+                  setName,
                   setPhoneNumber,
                   setPrivacyAccepted
                 );
               }}
             >
+              <Input
+                type="text"
+                placeholder="Ingresa tu nombre*"
+                className="rounded-full border-gray-300 h-14 text-base"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                disabled={isSubmitting}
+              />
               <Input
                 type="tel"
                 placeholder="Ingresa tu número*"
@@ -558,10 +579,12 @@ export default function Home() {
             onSubmit={(e) => {
               e.preventDefault();
               handleSubmit(
+                nameFooter,
                 phoneNumberFooter,
                 privacyAcceptedFooter,
                 setIsSubmittingFooter,
                 setSubmitMessageFooter,
+                setNameFooter,
                 setPhoneNumberFooter,
                 setPrivacyAcceptedFooter
               );
@@ -570,9 +593,17 @@ export default function Home() {
           >
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-center mb-6">
               <Input
+                type="text"
+                placeholder="Ingresa tu nombre*"
+                className="w-full max-w-sm rounded-full border-2 border-gray-300 h-14 text-base"
+                value={nameFooter}
+                onChange={(e) => setNameFooter(e.target.value)}
+                disabled={isSubmittingFooter}
+              />
+              <Input
                 type="tel"
-                placeholder="Ingresa tu número"
-                className="max-w-sm rounded-full border-2 border-gray-300 h-14 text-base"
+                placeholder="Ingresa tu número*"
+                className="w-full max-w-sm rounded-full border-2 border-gray-300 h-14 text-base"
                 value={phoneNumberFooter}
                 onChange={(e) => setPhoneNumberFooter(e.target.value)}
                 disabled={isSubmittingFooter}

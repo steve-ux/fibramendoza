@@ -30,7 +30,15 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { number, observaciones, recaptchaToken } = body;
+    const { number, nombre_form, observaciones, recaptchaToken } = body;
+
+    // Validar que el nombre esté presente
+    if (!nombre_form || typeof nombre_form !== 'string' || nombre_form.trim() === '') {
+      return NextResponse.json(
+        { error: 'El nombre es requerido' },
+        { status: 400 }
+      );
+    }
 
     // Validar que el número esté presente
     if (!number || typeof number !== 'string' || number.trim() === '') {
@@ -60,8 +68,8 @@ export async function POST(request: NextRequest) {
     const connection = await pool.getConnection();
     try {
       const [result] = await connection.execute(
-        'INSERT INTO base_numbers (number, fecha_ingreso, observaciones) VALUES (?, NOW(), ?)',
-        [number.trim(), observaciones || null]
+        'INSERT INTO base_numbers (number, nombre_form, estado, fecha_ingreso, observaciones) VALUES (?, ?, ?, NOW(), ?)',
+        [number.trim(), nombre_form.trim(), 'Pendiente', observaciones || null]
       );
 
       return NextResponse.json(
